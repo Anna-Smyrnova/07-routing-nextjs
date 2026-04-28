@@ -6,13 +6,13 @@ import NotesClient from "@/app/notes/filter/[...slug]/Notes.client";
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 
 type NotesbyCategoryProps = {
-params: {slug: string[]};
+  params: Promise<{ slug: string[] }>;
 };
 
 export default async function NotesByCategory({params}:NotesbyCategoryProps) {
-    const { slug } = params;
-    const tag = slug?.[0];
-    const searchTag = tag === 'all' ? undefined : tag;
+const { slug } = await params;
+const tag = slug?.[0] ?? "all";
+const searchTag = tag === "all" ? undefined : tag;
 
     const queryClient = new QueryClient();
 
