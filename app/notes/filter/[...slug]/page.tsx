@@ -2,7 +2,7 @@ import { fetchNotes } from "@/lib/api"
 
 import { QueryClient } from "@tanstack/react-query";
 import { NoteTag } from "@/types/note";
-import NotesClient from "@/app/notes/Notes.client";
+import NotesClient from "@/app/notes/filter/[...slug]/Notes.client";
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 
 type NotesbyCategoryProps = {
