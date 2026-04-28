@@ -3,20 +3,15 @@
 import { fetchNoteById } from "@/lib/api";
 import { useQuery } from "@tanstack/react-query";
 import css from "../../../components/NoteDetails/NoteDetails.module.css";
-// import { useRouter } from "next/navigation";
-// import { useParams } from "next/navigation";
+
 
 export default function NoteDetailsClient({ id }: { id: string }) {
 
-// const router = useRouter();
 
-// const handleGoBack = () => {
-//   router.back();
-// }
 
 const { data: note, isLoading, error } = useQuery({
   queryKey: ["note", id],
-  queryFn: () => fetchNoteById(id as string),
+  queryFn: () => fetchNoteById(id),
   enabled: Boolean(id),
   refetchOnMount: false,
 });
@@ -30,7 +25,7 @@ const { data: note, isLoading, error } = useQuery({
     <div className={css.container}>
        <div className={css.item}>
         <div className={css.header}>
-          {/* <button onClick ={handleGoBack}>Back</button> */}
+         
 
           <h2>{note.title}</h2>
         </div>

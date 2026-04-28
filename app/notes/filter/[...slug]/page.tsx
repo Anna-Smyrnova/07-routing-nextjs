@@ -10,8 +10,8 @@ params: {slug: string[]};
 };
 
 export default async function NotesByCategory({params}:NotesbyCategoryProps) {
-    const { slug } = await params;
-    const tag = slug[0];
+    const { slug } = params;
+    const tag = slug?.[0];
     const searchTag = tag === 'all' ? undefined : tag;
 
     const queryClient = new QueryClient();
